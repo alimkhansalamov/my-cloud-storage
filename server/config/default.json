@@ -2,5 +2,5 @@
   "serverPort": 5000,
   "dbUrl": "mongodb+srv://alimkhan:alimkhan@cloud.ej500.mongodb.net/cloud?retryWrites=true&w=majority",
   "secretKey": "my-secret-key",
-  "filePath": "C:\\Users\\alims\\Desktop\\my-cloud-storage\\server\\files"
+  "filePath": "C:\\Users\\alims\\Desktop\\my-cloud-storage\\server\\uploads"
 }
