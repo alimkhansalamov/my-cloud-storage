@@ -4,13 +4,18 @@ import { getFiles, uploadFile } from "../../actions/file";
 import FileList from "./FileList/FileList";
 import "./Disk.css";
 import Popup from "./Popup";
-import { setCurrentDir, setPopupDisplay } from "../../reducers/fileReducer";
+import {
+  setCurrentDir,
+  setFileView,
+  setPopupDisplay,
+} from "../../reducers/fileReducer";
 import Uploader from "./Uploader/Uploader";
 
 const Disk = () => {
   const dispatch = useDispatch();
   const currentDir = useSelector((state) => state.files.currentDir);
   const dirStack = useSelector((state) => state.files.dirStack);
+  const loader = useSelector((state) => state.loader.loader);
   const [dragEnter, setDragEnter] = useState(false);
   const [sort, setSort] = useState("type");
 
@@ -51,7 +56,18 @@ const Disk = () => {
     files.forEach((file) => dispatch(uploadFile(file, currentDir)));
     setDragEnter(false);
   }
-
+  if (loader) {
+    return (
+      <div className="loader">
+        <div className="lds-ring">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    );
+  }
   return !dragEnter ? (
     <div
       className="disk"
@@ -87,6 +103,18 @@ const Disk = () => {
           <option value="type">Type</option>
           <option value="date">Date</option>
         </select>
+        <button
+          className="disk__plate"
+          onClick={() => {
+            dispatch(setFileView("plate"));
+          }}
+        />
+        <button
+          className="disk__list"
+          onClick={() => {
+            dispatch(setFileView("list"));
+          }}
+        />
       </div>
 
       <FileList />

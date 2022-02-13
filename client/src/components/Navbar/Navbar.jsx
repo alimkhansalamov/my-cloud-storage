@@ -1,19 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
 import Logo from "./../../assets/img/navbar-logo.svg";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../reducers/userReducer";
+import { getFiles, searchFiles } from "../../actions/file";
+import { showLoader } from "../../reducers/appReducer";
 
 const Navbar = () => {
   const isAuth = useSelector((state) => state.user.isAuth);
+  const currentDir = useSelector((state) => state.files.currentDir);
   const dispatch = useDispatch();
+  const [searchName, setSearchName] = useState("");
+  const [searchTimeout, setSearchTimeout] = useState(false);
+
+  function searchChangeHandler(e) {
+    setSearchName(e.target.value);
+    if (searchTimeout !== false) {
+      clearTimeout(searchTimeout);
+    }
+    dispatch(showLoader());
+    if (e.target.value !== "") {
+      {
+        setSearchTimeout(
+          setTimeout(
+            (value) => {
+              dispatch(searchFiles(value));
+            },
+            500,
+            e.target.value
+          )
+        );
+      }
+    } else {
+      dispatch(getFiles(currentDir));
+    }
+  }
 
   return (
     <div className="container">
       <div className="navbar">
         <img className="navbar__logo" src={Logo} alt="navbar logo" />
         <div className="navbar__header">MY CLOUD STORAGE</div>
+        {isAuth && (
+          <input
+            value={searchName}
+            onChange={(e) => searchChangeHandler(e)}
+            type="text"
+            className="navbar__search"
+            placeholder="File name..."
+          />
+        )}
         {!isAuth && (
           <div className="navbar__login">
             <NavLink to="/login">Log In</NavLink>

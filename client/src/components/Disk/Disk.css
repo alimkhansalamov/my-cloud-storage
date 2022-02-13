@@ -17,6 +17,9 @@
   cursor: pointer;
   margin-left: 10px;
 }
+.disk__select {
+  margin-left: auto;
+}
 
 .drop-area {
   width: 100%;
@@ -27,6 +30,30 @@
   justify-content: center;
   align-items: center;
   font-size: 40px;
+}
+
+.disk__list,
+.disk__plate {
+  height: 20px;
+  width: 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background: no-repeat center center;
+  background-size: contain;
+  margin: 0 10px;
+}
+.disk__list{
+  margin-right: 0;
+}
+.disk__plate{
+  margin-left: 20px;
+}
+.disk__list {
+  background-image: url("../../assets/img/list.svg");
+}
+.disk__plate {
+  background-image: url("../../assets/img/plate.svg");
 }
 
 .popup {
@@ -59,4 +86,47 @@
 }
 .popup input {
   margin: 20px 0px;
+}
+
+.loader{
+  display: flex;
+  justify-content:center;
+  align-items: center;
+  height:calc(100vh - 50px)
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border: 8px solid #566885;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #566885 transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

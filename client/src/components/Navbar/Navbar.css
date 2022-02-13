@@ -23,6 +23,11 @@
 .navbar__registration{
   margin-right: 25px;
 }
+
+.navbar__search {
+  width: 200px;
+  margin-left: 30px;
+}
 .container {
   width: 1140px;
   display: flex;
