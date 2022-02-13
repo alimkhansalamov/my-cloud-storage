@@ -68,7 +68,6 @@ class FileController {
       if (fs.existsSync(path)) {
         return res.status(400).json({ message: "File already exists" });
       }
-
       file.mv(path);
 
       const type = file.name.split(".").pop();
@@ -95,17 +94,13 @@ class FileController {
     }
   }
 
-  async downLoadFile(req, res) {
+  async downloadFile(req, res) {
     try {
       const file = await File.findOne({ _id: req.query.id, user: req.user.id });
+
       const path =
-        config.get("filePath") +
-        "\\" +
-        req.user.id +
-        "\\" +
-        file.path +
-        "\\" +
-        file.name;
+        config.get("filePath") + "\\" + req.user.id + "\\" + file.path;
+      +"\\" + file.name;
       if (fs.existsSync(path)) {
         return res.download(path, file.name);
       }
