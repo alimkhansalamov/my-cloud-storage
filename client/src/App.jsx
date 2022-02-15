@@ -7,6 +7,7 @@ import Login from "./components/Authorization/Login";
 import { useDispatch, useSelector } from "react-redux";
 import { auth } from "./actions/user";
 import Disk from "./components/Disk/Disk";
+import Profile from "./components/Profile/Profile";
 
 const App = () => {
   const isAuth = useSelector((state) => state.user.isAuth);
@@ -30,6 +31,7 @@ const App = () => {
           ) : (
             <Routes>
               <Route path="/" element={<Disk />} />
+              <Route path="/profile" element={<Profile />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           )}
