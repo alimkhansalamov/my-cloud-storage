@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { deleteAvatar, uploadAvatar } from "../../actions/user";
+import "./Profile.css";
 
 const Profile = () => {
   const dispatch = useDispatch();
@@ -11,14 +12,26 @@ const Profile = () => {
   }
 
   return (
-    <div>
-      <button onClick={() => dispatch(deleteAvatar())}>Delete avatar</button>
-      <input
-        accept="image/*"
-        type="file"
-        placeholder="Upload avatar"
-        onChange={(e) => changeHandler(e)}
-      />
+    <div className="profile">
+      <div className="profile__content">
+        <button onClick={() => dispatch(deleteAvatar())} className="button">
+          Delete avatar
+        </button>
+        <label
+          htmlFor="profile__upload-input"
+          className="profile__upload-label"
+        >
+          Upload avatar
+        </label>
+        <input
+          accept="image/*"
+          type="file"
+          placeholder="Upload avatar"
+          onChange={(e) => changeHandler(e)}
+          id="profile__upload-input"
+          className="profile__upload-input"
+        />
+      </div>
     </div>
   );
 };

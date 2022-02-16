@@ -2,6 +2,7 @@ import React from "react";
 import "./Uploader.css";
 import { useDispatch } from "react-redux";
 import { removeUploadFile } from "../../../reducers/uploadReducer";
+import Close from "./../../../assets/img/close.svg";
 
 const UploadFile = ({ file }) => {
   const dispatch = useDispatch();
@@ -10,10 +11,10 @@ const UploadFile = ({ file }) => {
       <div className="upload-file__header">
         <div className="upload-file__name">{file.name}</div>
         <button
-          className="upload-file__remove"
+          className="upload-file__close"
           onClick={() => dispatch(removeUploadFile(file.id))}
         >
-          X
+          <img src={Close} alt="" className="upload-file__close-btn" />
         </button>
       </div>
       <div className="upload-file__progress-bar">

@@ -1,0 +1,30 @@
+.profile{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  text-align: end;
+  margin-top: 15px;
+}
+
+.profile__input{
+  align-self: center;
+}
+
+.profile__upload-input {
+  display: none;
+}
+.profile__upload-label {
+  color: #4363b8;
+  border-radius: 5px;
+  border: 2px dashed #3a6bc0;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+.profile__upload-label:hover{
+  border: none;
+  background-color: #23cd97;
+  color: #fff;
+  padding: 5px 10px;
+}
+

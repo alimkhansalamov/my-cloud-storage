@@ -3,6 +3,7 @@ import Input from "../Input/Input";
 import { useDispatch, useSelector } from "react-redux";
 import { setPopupDisplay } from "../../reducers/fileReducer";
 import { createDir } from "../../actions/file";
+import Close from "./../../assets/img/close.svg";
 
 const Popup = () => {
   const [dirName, setDirName] = useState("");
@@ -32,16 +33,20 @@ const Popup = () => {
             className="popup__close"
             onClick={() => dispatch(setPopupDisplay("none"))}
           >
-            X
+            <img src={Close} alt="delete image" className="popup__close-btn" />
           </button>
         </div>
+        <label htmlFor=""></label>
         <Input
           type="text"
           placeholder="Enter folder name"
           value={dirName}
           setValue={setDirName}
         />
-        <button className="popup__create" onClick={() => createHandler()}>
+        <button
+          className="popup__create button"
+          onClick={() => createHandler()}
+        >
           Create
         </button>
       </div>

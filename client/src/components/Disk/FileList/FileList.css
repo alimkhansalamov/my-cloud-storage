@@ -1,5 +1,5 @@
 .fileList {
-  margin: 20px 0;
+  margin: 40px 0;
 }
 
 .fileList__header {
@@ -24,7 +24,8 @@
 .filePlate {
   display: flex;
   flex-wrap: wrap;
-  margin: 20px 0;
+  margin: 40px 0;
+
 }
 
 
@@ -41,3 +42,4 @@
     transform: translateY(0);
   }
 }
+

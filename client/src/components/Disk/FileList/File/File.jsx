@@ -47,14 +47,14 @@ const File = ({ file }) => {
             onClick={(e) => downloadClickHandler(e)}
             className="file__btn file__download"
           >
-            download
+            <img src={Download} alt="" />
           </button>
         )}
         <button
           onClick={(e) => deleteClickHandler(e)}
           className="file__btn file__delete"
         >
-          delete
+          <img src={Delete} alt="" />
         </button>
       </div>
     );
@@ -62,27 +62,29 @@ const File = ({ file }) => {
   if (fileView === "plate") {
     return (
       <div className="file-plate" onClick={() => openDirHandler(file)}>
-        <img
-          src={file.type === "dir" ? dirLogo : fileLogo}
-          alt=""
-          className="file-plate__img"
-        />
-        <div className="file-plate__name">{file.name}</div>
-        <div className="file-plate__btns">
-          {file.type !== "dir" && (
+        <div className="file-plate__content">
+          <img
+            src={file.type === "dir" ? dirLogo : fileLogo}
+            alt=""
+            className="file-plate__img"
+          />
+          <div className="file-plate__name">{file.name}</div>
+          <div className="file-plate__btns">
+            {file.type !== "dir" && (
+              <button
+                onClick={(e) => downloadClickHandler(e)}
+                className="file-plate__btn file-plate__download"
+              >
+                <img src={Download} alt="" />
+              </button>
+            )}
             <button
-              onClick={(e) => downloadClickHandler(e)}
-              className="file-plate__btn file-plate__download"
+              onClick={(e) => deleteClickHandler(e)}
+              className="file-plate__btn file-plate__delete"
             >
-              download
+              <img src={Delete} alt="" />
             </button>
-          )}
-          <button
-            onClick={(e) => deleteClickHandler(e)}
-            className="file-plate__btn file-plate__delete"
-          >
-            delete
-          </button>
+          </div>
         </div>
       </div>
     );

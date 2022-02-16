@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Navbar.css";
-import Logo from "./../../assets/img/navbar-logo.svg";
+import Logo from "./../../assets/img/cloud.svg";
 import avatarLogo from "./../../assets/img/avatar.svg";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -46,30 +46,45 @@ const Navbar = () => {
   return (
     <div className="container">
       <div className="navbar">
-        <img className="navbar__logo" src={Logo} alt="navbar logo" />
-        <div className="navbar__header">MY CLOUD STORAGE</div>
+        <NavLink to="/" className="navbar__header-link">
+          <img className="navbar__logo" src={Logo} alt="navbar logo" />
+        </NavLink>
+
+        <div className="navbar__header">
+          <NavLink to="/" className="navbar__header-link">
+            My Cloud Storage
+          </NavLink>
+        </div>
         {isAuth && (
           <input
             value={searchName}
             onChange={(e) => searchChangeHandler(e)}
             type="text"
             className="navbar__search"
-            placeholder="File name..."
+            placeholder="Search files..."
           />
         )}
         {!isAuth && (
           <div className="navbar__login">
-            <NavLink to="/login">Log In</NavLink>
+            <NavLink to="/login" className="navbar__link">
+              Log In
+            </NavLink>
           </div>
         )}
         {!isAuth && (
           <div className="navbar__registration">
-            <NavLink to="/registration"> Sign Up </NavLink>
+            <NavLink to="/registration" className="navbar__link">
+              {" "}
+              Sign Up{" "}
+            </NavLink>
           </div>
         )}
         {isAuth && (
           <div className="navbar__login" onClick={() => dispatch(logout())}>
-            <NavLink to="/login"> Log Out </NavLink>
+            <NavLink to="/login" className="navbar__link">
+              {" "}
+              Log Out{" "}
+            </NavLink>
           </div>
         )}
         {isAuth && (

@@ -1,27 +1,57 @@
 .navbar {
   display: flex;
-  height: 70px;
+  height: 80px;
   align-items: center;
-  background-color: white;
+  background-color: #c5f6fa;
+  border-radius: 0 0 8px 8px;
   width: 100%;
 }
 
 .navbar__logo{
   margin-left: 10px;
-  height: 50px;
+  height: 80px;
 }
 .navbar__header {
+  font-size: 2em;
   margin-left: 10px;
-  font-size: 24px;
   font-weight: 700;
+  font-family: 'Fredoka One', cursive;
 }
+
+.navbar__header-link{
+  text-decoration: none;
+  font-size: inherit;
+  font-style: inherit;
+  font-family: inherit;
+}
+
 .navbar__login {
   margin-left: auto;
   margin-right: 20px;
+  font-size: 1.2em;
+  outline-style: none;
 }
 
 .navbar__registration{
   margin-right: 25px;
+  font-size: 1.2em;
+}
+
+.navbar__link{
+  display: inline-block;
+  color: #3a6bc0;
+  text-decoration: none;
+}
+.navbar__link::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #3a6bc0;
+  transition: width .3s;
+}
+.navbar__link:hover::after {
+  width: 100%;
 }
 
 .navbar__search {
@@ -31,7 +61,7 @@
 .navbar__avatar {
   width: 40px;
   height: 40px;
-  margin-right: 3px;
+  margin-right: 10px;
   border-radius: 50%;
 }
 

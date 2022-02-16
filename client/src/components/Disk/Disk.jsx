@@ -76,10 +76,16 @@ const Disk = () => {
       onDragOver={dragEnterHandler}
     >
       <div className="disk__btns">
-        <button className="disk__back" onClick={() => backClickHandler()}>
+        <button
+          className="disk__back button"
+          onClick={() => backClickHandler()}
+        >
           Back
         </button>
-        <button className="disk__create" onClick={() => showPopupHandler()}>
+        <button
+          className="disk__create button"
+          onClick={() => showPopupHandler()}
+        >
           Create a folder
         </button>
         <div className="disk__upload">
